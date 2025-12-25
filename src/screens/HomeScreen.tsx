@@ -44,15 +44,10 @@ export default function HomeScreen() {
       </View>
 
       {/* محتوى تحت الهيدر (مؤقت عشان تشوفينها) */}
-      <View style={{ padding: 16 }}>
-       <View style={styles.rowItem}>
-  <Image
-    source={require("../../assets/iconrow.png")}
-    style={styles.rowIcon}
-  />
+   <View style={styles.rowItem}>
   <Text style={styles.rowText}>كلمات حروف</Text>
+  <Image source={require("../../assets/icon1.png")} style={styles.rowIcon} />
 </View>
-      </View>
     </ScrollView>
   );
 }
@@ -102,19 +97,24 @@ const styles = StyleSheet.create({
   },
 
   rowItem:{
-    flexDirection:"row",
+    width : "100%" , 
+    flexDirection:"row-reverse",
     alignItems: "center",
+    justifyContent: "flex-end",
+    //alignSelf : "flex-end",
     gap:8,
   },
   rowIcon:{
     width: 40,
     height:40,
     resizeMode: "contain",
+     //alignItems: "center",
   },
   rowText:{
     fontSize: 25,
     color: "#000",
       fontWeight: "bold",
+       textAlign: "right"
 
 
   },
