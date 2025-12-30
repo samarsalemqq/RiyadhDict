@@ -3,4 +3,4 @@ export type RootStackParamList = {
   Search: undefined;
   Results: { query: string };
   Details: { word: string };
-};
+   MoreScreen: undefined;};
