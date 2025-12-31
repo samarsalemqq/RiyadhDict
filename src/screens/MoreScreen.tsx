@@ -11,6 +11,7 @@ import {
   Linking,
 } from "react-native";
 
+
 import CloseIcon from "../../assets/close.svg";
 import MenuIcon from "../../assets/manus.svg";
 import GearIcon from "../../assets/settings.svg";
@@ -24,6 +25,8 @@ import MailIcon from "../../assets/mail.svg";
 import LinkedinIcon from "../../assets/linkedin.svg";
 
 const { height: H } = Dimensions.get("window");
+
+
 
 type SheetKey = "about" | "terms" | "contact" | null;
 
@@ -73,8 +76,9 @@ export default function MoreScreen({ navigation }: any) {
       </View>
 
       {/* ===== Items ===== */}
-      <View style={styles.list}>
-        <Row title="الإعدادات" Icon={GearIcon} onPress={() => {}} />
+        <View style= {styles.list}>
+       <Row title="الأعدادات"  Icon ={GearIcon} onPress={()=>  navigation.navigate("SettingsScreen")}/>
+        
         <Row title="عن تطبيق معجم الرياض" Icon={InfoIcon} onPress={() => openSheet("about")} />
         <Row title="شروط والأحكام" Icon={DocIcon} onPress={() => openSheet("terms")} />
         <Row title="تواصل معنا" Icon={PhoneIcon} onPress={() => openSheet("contact")} />
@@ -188,6 +192,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     paddingTop: 90,         
     paddingHorizontal: 18,  
+
   },
 
   /* ===== Header ===== */
