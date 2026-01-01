@@ -165,7 +165,6 @@ const styles = StyleSheet.create({
 
   ctaText: { color: "#183030ff", fontWeight: "900" },
 
-  /* ===== Dots ===== */
   dotsRow: {
     flexDirection: "row",
     justifyContent: "center",

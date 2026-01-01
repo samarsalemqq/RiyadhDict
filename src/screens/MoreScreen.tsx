@@ -142,7 +142,7 @@ export default function MoreScreen({ navigation }: any) {
             {sheet === "terms" && (
               <ScrollView showsVerticalScrollIndicator={false}>
                 <Text style={styles.sheetText}>
-                  هذا مكان نص الشروط والأحكام… (اكتبي البنود المختصرة أو رابط الشروط)
+                ( لحتاج الشروط والاحكام)
                 </Text>
               </ScrollView>
             )}
@@ -173,10 +173,10 @@ function Row({
 function ContactCard({
   icon,
   onPress,
-}: {
+ }: {
   icon: React.ReactNode;
   onPress: () => void;
-}) {
+ }) {
   return (
     <Pressable style={styles.contactCard} onPress={onPress}>
       <Text style={styles.contactArrow}>‹</Text>
@@ -274,8 +274,7 @@ const styles = StyleSheet.create({
 
   sheetHeader: { alignItems: "flex-end",
      paddingHorizontal: 22,
-      paddingTop: 6
-     },
+      paddingTop: 6 },
 
   sheetLogo: {
     alignSelf: "flex-end",   
@@ -346,3 +345,4 @@ const styles = StyleSheet.create({
     marginTop: 6,
   },
 });
+

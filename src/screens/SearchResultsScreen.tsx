@@ -100,7 +100,7 @@ export default function ResultsScreen() {
 
       {/* ================= Title ================= */}
       <View style={styles.titleWrap}>
-        <ResarchResIcon width={20} height={20} />
+        <ResarchResIcon width={30} height={30} />
         <Text style={styles.title}>نتائج البحث</Text>
       </View>
 
@@ -213,7 +213,8 @@ const styles = StyleSheet.create({
 
  titleWrap: {
   paddingHorizontal: 20,
-  paddingTop: 6,
+  paddingTop: 20,
+   paddingBottom: 20,
   flexDirection: "row-reverse",
   alignItems: "center",
   gap: 8,
@@ -222,7 +223,9 @@ const styles = StyleSheet.create({
   title: { fontSize: 24,
      fontWeight: "900",
       color: "#0E6B6D", 
-      textAlign: "right" 
+      textAlign: "right", 
+   
+      
     },
 
   card: {
@@ -230,7 +233,7 @@ const styles = StyleSheet.create({
     borderColor: "rgba(0,0,0,0.08)",
     borderRadius: 14,
     padding: 14,
-    marginBottom: 12,
+    marginBottom: 14,
   },
 
   word: { fontSize: 18,
@@ -253,13 +256,13 @@ const styles = StyleSheet.create({
       marginTop: 40, 
       color: "#777"
      },
-     defSmall: {
-  marginTop: 6,
-  fontSize: 13,
-  textAlign: "right",
-  color: "#333",
-  opacity: 0.75,
-},
+    defSmall: {
+    marginTop: 6,
+    fontSize: 13,
+    textAlign: "right",
+    color: "#333",
+    opacity: 0.75,
+  },
 
 wordRow: {
   flexDirection: "row-reverse",
