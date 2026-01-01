@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -11,7 +11,6 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../navigation/types";
-
 import WordOfTheDayCard from "../../components/WordOfTheDayCard";
 import ReadingContestSlider from "../../components/ReadingContestSlider";
 
@@ -25,10 +24,37 @@ import NewIcon from "../../assets/Know.svg";
 import SearchIcon from "../../assets/search.svg";
 import MicIcon from "../../assets/Mic1.svg";
 
-type Nav = NativeStackNavigationProp<RootStackParamList, "Home">;
+import { searchEntriesWeb, type SearchEntry } from "../API/services";
+
+
+type Nav = NativeStackNavigationProp<RootStackParamList>;
 
 export default function HomeScreen() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<Nav>();
+
+  const [query, setQuery] = useState("");
+  const [loading, setLoading] = useState(false);
+
+
+const doSearch = async () => {
+  const q= query.trim();
+  if (!q) return;
+
+  try {
+    setLoading(true);
+    const data : SearchEntry []= await searchEntriesWeb(q);
+
+    navigation.navigate("Results", {
+      query: q,
+      results: data,
+    });
+  } catch (e) {
+    console.log("SEARCH ERROR", e);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <View style={styles.container}>
@@ -43,8 +69,9 @@ export default function HomeScreen() {
             </Pressable>
 
             <Pressable style={styles.iconBtn}>
-              <BellIcon width={20} height={20} />
-            </Pressable>
+             <BellIcon width={20} height={20}  />
+
+             </Pressable>
 
             <Pressable
              style={styles.iconBtn}
@@ -67,11 +94,16 @@ export default function HomeScreen() {
             placeholderTextColor="rgba(0,0,0,0.45)"
             style={styles.searchInput}
             textAlign="right"
-          />
+            value={query}
+            onChangeText={setQuery}
+            onSubmitEditing={doSearch}
+            />
 
-          <Pressable style={styles.searchIconBtn} onPress={() => {}}>
-            <SearchIcon width={30} height={30} />
+
+          <Pressable style={styles.searchIconBtn} onPress={doSearch}>
+          <SearchIcon width={20} height={20} />
           </Pressable>
+
         </View>
       </View>
 
@@ -135,20 +167,17 @@ export default function HomeScreen() {
               <Text style={styles.viewAll}>عرض الكل</Text>
             </Pressable>
           </View>
+      
+        <View style={styles.latestGrid}>
+       {[1,2,3,4].map((i) => (
+      <View key={i} style={styles.latestCard}>
+      <Text style={styles.latestWord}>—</Text>
+      <Text style={styles.latestDesc}>باقي اربطها  api</Text>
+    </View>
+  ))}
+</View>
 
-          <View style={styles.latestGrid}>
-            {[
-              { word: "وَجاهة", desc: "منزلة وقدر" },
-              { word: "مهمومة", desc: "كلام خفي غير مسموع" },
-              { word: "نَزِق", desc: "سريع الغضب" },
-              { word: "خَصْب", desc: "كثير الخير" },
-            ].map((item, idx) => (
-              <Pressable key={idx} style={styles.latestCard}>
-                <Text style={styles.latestWord}>{item.word}</Text>
-                <Text style={styles.latestDesc}>{item.desc}</Text>
-              </Pressable>
-            ))}
-          </View>
+
         </View>
       </ScrollView>
     </View>
@@ -255,29 +284,23 @@ const styles = StyleSheet.create({
   },
 
     titleRow: {
-        flexDirection: "row-reverse",
+      flexDirection: "row-reverse",
         alignItems: "center",
         justifyContent:"flex-end",
         gap: 5,
-        marginBottom: 14 ,
- },
-
-
+        //marginBottom: 14 ,
+         marginTop: 20,
+  },
     sectionIcon:{
         width: 26,
         height: 26,
         resizeMode : "contain",
-
- },
-
+  },
      sectionTitleRight: {
         fontSize: 20 ,
         fontWeight: "800",
-        textAlign : "right",
-
-        
-        
- },
+        textAlign : "right",     
+  },
 
      viewAll:{ 
         fontSize: 14,
@@ -286,12 +309,7 @@ const styles = StyleSheet.create({
         textAlign: "right",
         
          //gap: 8,
-        
-
-
- },
-
-
+  },
      letterBox:{
         backgroundColor:"#E6F2F2",
         width: 52,
@@ -299,14 +317,11 @@ const styles = StyleSheet.create({
         borderRadius:14,
         alignItems: "center",
         justifyContent: "center",
-        overflow : "hidden",
-        
- },
-
+        overflow : "hidden",    
+  },
      letter: {
         fontSize: 20,
         textAlign: "center",
-
   },
 
      viewAllBtn:{
@@ -350,35 +365,35 @@ const styles = StyleSheet.create({
       borderColor : "#2C5B61",
       borderWidth:0.2,
       padding: 14,
-},
+ },
 
       latestWord: {
       fontSize: 18,
       fontWeight: "800",
       textAlign: "right",
       color: "#111",
-},
+ },
 
       latestDesc: {
       marginTop: 6,
       fontSize: 13,
       opacity: 0.7,
       textAlign: "right",
-},
+ },
 
      sectionHeader: {
      flexDirection: "column",
      alignItems: "flex-end",
       gap: 6,
-},
+ },
 
      scroll: {
      flex: 1,
-},
+ },
 
      scrollContent: {
      paddingBottom: 24,
-},
+ },
 
     
 });

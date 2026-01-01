@@ -4,7 +4,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import TabsNavigator from "./src/navigation/TabsNavigator";
 import MoreScreen from "./src/screens/MoreScreen";
-import SettingsScreen from "./src/screens/SettingsScreen"; // 👈 أضيفي هذا
+import SettingsScreen from "./src/screens/SettingsScreen"; 
+import SearchResultsScreen from "./src/screens/SearchResultsScreen";
+import WordOfTheDayCard from "./components/WordOfTheDayCard";
+import WordDetailsScreen from "./src/screens/WordDetailsScreen";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +24,13 @@ export default function App() {
 
         {/* صفحة الإعدادات */}
         <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+
+         {/* صفحة نتائج البحث */}
+        <Stack.Screen name="Results" component={SearchResultsScreen}/>
+
+          {/* صفحة التفاصيل للكلمة بعد البحث */}
+        <Stack.Screen name="WordDetails" component={WordDetailsScreen}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );

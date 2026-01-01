@@ -38,12 +38,12 @@ export default function SettingsScreen() {
     <View style={[styles.screen, { backgroundColor: colors.bg }]}>
       {/* ===== Header ===== */}
       <View style={styles.headerRow}>
-        <Pressable
-          style={[styles.closeBtn, { backgroundColor: isDark ? "rgba(255,255,255,0.16)" : "rgba(0,0,0,0.10)" }]}
-          onPress={() => navigation.goBack()}
-        >
-          <CloseIcon width={18} height={18} />
-        </Pressable>
+       <Pressable
+  style={styles.closeBtn}
+  onPress={() => navigation.goBack()}
+>
+  <CloseIcon width={20} height={20} fill={colors.primary} />
+</Pressable>
 
         <Text style={[styles.headerTitle, { color: colors.primary }]}>الإعدادات</Text>
 
@@ -62,14 +62,7 @@ export default function SettingsScreen() {
             colors={colors}
           />
 
-          <RowSwitch
-            title="صوت كلمة اليوم"
-            subtitle="تشغيل نطق الكلمة عند الضغط"
-            Icon={SoundIcon}
-            value={wordSound}
-            onValueChange={setWordSound}
-            colors={colors}
-          />
+          
         </Section>
 
        
@@ -188,9 +181,13 @@ function RowInfo({
         <Text style={[styles.rowSub, { color: colors.sub }]}>معلومات عامة</Text>
       </View>
 
-      <View style={[styles.iconBox, { borderColor: colors.border }]}>
-        <Icon width={18} height={18} fill={colors.primary} stroke={colors.primary} />
-      </View>
+     <Icon
+  width={20}
+  height={20}
+  fill={colors.primary}
+  stroke={colors.primary}
+/>
+
     </View>
   );
 }
@@ -211,7 +208,6 @@ const styles = StyleSheet.create({
   closeBtn: {
     width: 34,
     height: 34,
-    borderRadius: 17,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -222,7 +218,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  content: { paddingHorizontal: 18, paddingTop: 6 },
+  content: { paddingHorizontal: 20, paddingTop: 20 },
 
   sectionTitle: {
     textAlign: "right",

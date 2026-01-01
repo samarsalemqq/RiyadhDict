@@ -91,7 +91,7 @@ export default function MoreScreen({ navigation }: any) {
         <Animated.View style={[styles.sheet, { transform: [{ translateY: slideY }] }]}>
           <View style={styles.sheetHandle} />
 
-          {/* header داخل الشيت */}
+          {/* header */}
           <View style={styles.sheetHeader}>
             <LogoIcon width={80} height={44} style={styles.sheetLogo} />
             <View style={styles.divider} />
@@ -185,8 +185,13 @@ function ContactCard({
   );
 }
 
+/* ================= Styles ================= */
+
+
+
+
 const styles = StyleSheet.create({
-  /* ===== Screen ===== */
+ 
   screen: {
     flex: 1,
     backgroundColor: "#fff",
@@ -195,7 +200,6 @@ const styles = StyleSheet.create({
 
   },
 
-  /* ===== Header ===== */
   headerRow: {
     paddingTop: 0,
     paddingHorizontal: 0,
@@ -212,11 +216,23 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  headerRight: { flexDirection: "row-reverse", alignItems: "center", gap: 10 },
-  headerTitle: { fontSize: 26, fontWeight: "900", color: "#0E6B6D" },
+  headerRight: { 
+    flexDirection: "row-reverse",
+     alignItems: "center",
+      gap: 10
+     },
 
-  /* ===== List ===== */
-  list: { marginTop: 0, paddingHorizontal: 0, gap: 22 },
+  headerTitle: { 
+    fontSize: 26, 
+    fontWeight: "900", 
+    color: "#0E6B6D"
+   },
+
+  list: {
+     marginTop: 0,
+      paddingHorizontal: 0,
+       gap: 22 
+  },
 
   row: {
     flexDirection: "row-reverse",
@@ -225,9 +241,13 @@ const styles = StyleSheet.create({
     gap: 18,
   },
 
-  rowText: { fontSize: 15, fontWeight: "700", color: "#111", textAlign: "right" },
+  rowText: { 
+    fontSize: 15,
+    fontWeight: "700",
+    color: "#111",
+    textAlign: "right"
+  },
 
-  /* ===== Modal ===== */
   backdrop: { ...StyleSheet.absoluteFillObject, backgroundColor: "rgba(0,0,0,0.45)" },
 
   sheet: {
@@ -252,8 +272,10 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
 
-  /* ===== Sheet Header ===== */
-  sheetHeader: { alignItems: "flex-end", paddingHorizontal: 22, paddingTop: 6 },
+  sheetHeader: { alignItems: "flex-end",
+     paddingHorizontal: 22,
+      paddingTop: 6
+     },
 
   sheetLogo: {
     alignSelf: "flex-end",   
@@ -275,12 +297,18 @@ const styles = StyleSheet.create({
     textAlign: "right",
   },
 
-  /* ===== Sheet Body ===== */
-  sheetBody: { paddingHorizontal: 22, paddingTop: 18 },
+  sheetBody: {
+     paddingHorizontal: 22,
+      paddingTop: 18 
+    },
 
-  sheetText: { fontSize: 16, lineHeight: 24, color: "#333", textAlign: "right" },
+  sheetText: { 
+    fontSize: 16,
+     lineHeight: 24, 
+     color: "#333", 
+     textAlign: "right" 
+    },
 
-  /* ===== Contact UI ===== */
   contactSubTitle: {
     fontSize: 14,
     color: "#333",
@@ -301,9 +329,14 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
 
-  contactArrow: { fontSize: 24, color: "#0E6B6D" },
+  contactArrow: { fontSize: 24,
+     color: "#0E6B6D"
+   },
 
-  contactIcon: { justifyContent: "center", alignItems: "center" },
+  contactIcon: { 
+    justifyContent: "center", 
+    alignItems: "center" 
+  },
 
   commentText: {
     fontSize: 13,

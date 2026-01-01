@@ -44,7 +44,6 @@ export default function ReadingContestSlider({ onRegisterPress }: Props) {
       >
         {slides.map((s, idx) => (
           <View key={idx} style={[styles.card, { width: CARD_WIDTH }]}>
-            {/* ✅ SVG على جنب داخل مربع */}
             <View style={styles.imageBox}>
               {s.Icon ? (
                 <View style={styles.svgCenter}>
@@ -55,7 +54,6 @@ export default function ReadingContestSlider({ onRegisterPress }: Props) {
               )}
             </View>
 
-            {/* ✅ النص + الزر بالوسط */}
             <View style={styles.textSide}>
               <Text style={styles.title}>{s.title}</Text>
               <Text style={styles.subtitle}>{s.subtitle}</Text>
@@ -68,7 +66,6 @@ export default function ReadingContestSlider({ onRegisterPress }: Props) {
         ))}
       </Animated.ScrollView>
 
-      {/* ✅ الدواير تحت الإعلان */}
       <View style={styles.dotsRow}>
         {slides.map((_, i) => {
           const inputRange = [(i - 1) * CARD_WIDTH, i * CARD_WIDTH, (i + 1) * CARD_WIDTH];
@@ -102,6 +99,7 @@ export default function ReadingContestSlider({ onRegisterPress }: Props) {
     </View>
   );
 }
+/* ================= Styles ================= */
 
 const styles = StyleSheet.create({
   wrap: { marginTop: 12 },
@@ -122,7 +120,6 @@ const styles = StyleSheet.create({
     gap: 12,
   },
 
-  /* ===== SVG Box ===== */
   imageBox: {
     width: 98,
     height: 98,
@@ -138,7 +135,6 @@ const styles = StyleSheet.create({
 
   imagePlaceholder: { flex: 1 },
 
-  /* ===== Text + CTA ===== */
   textSide: {
     flex: 1,
     alignItems: "center",

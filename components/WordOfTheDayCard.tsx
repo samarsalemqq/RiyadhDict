@@ -21,6 +21,12 @@ export default function WordOfTheDayCard() {
     </View>
   );
 }
+
+
+/* ================= Styles ================= */
+
+
+
  
 const styles = StyleSheet.create({
   card: {
